@@ -2,34 +2,31 @@ import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTests {
-    @Spy
-    private Feline feline;
 
     @Test
     public void checkThatFelineEatsMeat() throws Exception {
-        feline.eatMeat();
-        Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
+        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), new Feline().eatMeat());
     }
 
     @Test
     public  void checkThatFelineHasFamily() {
-        Assert.assertEquals("Не относится к семейству кошачих","Кошачьи", feline.getFamily());
+        Assert.assertEquals("Не относится к семейству кошачих","Кошачьи", new Feline().getFamily());
     }
 
     @Test
     public void checkCountOfKittensMoreWhenOne() {
-        Assert.assertEquals("Не верное количество катят",10, feline.getKittens(10));
+        Assert.assertEquals("Не верное количество детенышей",10, new Feline().getKittens(10));
     }
 
     @Test
     public void checkCountOfKittensIsOne() {
-        feline.getKittens();
-        Mockito.verify(feline, Mockito.times(1)).getKittens(1);
+        Feline feline = new Feline();
+        Assert.assertEquals("Количество детенышей - один", feline.getKittens(1),feline.getKittens());
     }
 }

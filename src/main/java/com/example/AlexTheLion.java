@@ -9,7 +9,7 @@ public class AlexTheLion extends Lion{
     private List<String> friends = List.of("Марти", "Глория", "Мелман");
 
     public AlexTheLion(Feline feline) throws Exception {
-        super( "Самец");
+        super( feline,"Самец");
         this.feline = feline;
     }
 
